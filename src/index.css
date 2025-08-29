@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@300;400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --theme-gradient: linear-gradient(45deg, #0EA5E9, #14B8A6);
+}
+
+html,body,#root{height:100%}
+body {
+  @apply bg-theme-bg text-theme-text font-sans;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Glassy card effect */
+.glass-card {
+  @apply bg-white/60 backdrop-blur-lg border border-slate-200/80 rounded-xl shadow-soft;
+}
+
+/* Primary button style */
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold shadow-soft;
+  background: var(--theme-gradient);
+  transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s;
+}
+.btn-primary:hover { 
+  transform: translateY(-2px); 
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.2); 
+}
+
+.text-muted { @apply text-theme-muted; }
+.card-title { @apply text-theme-text font-serif; }
+
+/* reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
