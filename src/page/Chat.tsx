@@ -1,8 +1,10 @@
+// src/page/Chat.tsx
 import React, { useState } from "react";
 import ChatMessage from "../components/ChatMessage";
 import { queryChat } from "../lib/api";
 import { ChatResponse, SourceChunk } from "../types";
-import { PaperAirplaneIcon } from '@heroicons/react/24/solid'; // Example icon
+import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
+import TravelIllustration from "../assets/adventure.png"; // Import the image
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; text: string; sources?: SourceChunk[] }[]>([]);
@@ -45,7 +47,15 @@ export default function ChatPage() {
     <div className="flex flex-col h-full bg-theme-bg">
       <div className="flex-1 overflow-y-auto space-y-6 px-6 py-8">
         {messages.length === 0 && (
-          <div className="text-center text-theme-muted">Let's plan your next adventure!</div>
+          <div className="text-center text-theme-muted flex flex-col items-center justify-center h-full">
+            <img 
+              src={TravelIllustration} 
+              alt="Adventure" 
+              className="w-96 h-auto mb-4 rounded-xl" 
+            
+            />
+            <span className="text-lg">Let's plan your next adventure!</span>
+          </div>
         )}
         <div className="flex flex-col gap-4">
           {messages.map((m, i) => (
